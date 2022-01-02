@@ -82,12 +82,13 @@ public class Game
                 }
             }
         }
-        for (int i=0;i<size;i++){ {
-            System.out.print(filled[i][column]);
+        System.out.print("[");;
+        for (int i=0;i<size;i++){
+            System.out.print(filled[i][column]+",");
         }
-        }
+        System.out.println("]");
     }
-   
+    
     public void calcCS(int column){
         int x=0;
         for(int i=0;i<columns[column].size();i++){
