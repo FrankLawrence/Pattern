@@ -35,7 +35,7 @@ public class Game
         }
     }
     
-    public void calcR(int row){
+    public void calcRow(int row){
         int x=0;
         for(int i=0;i<rows[row].size();i++){
             x += rows[row].get(i);
@@ -60,7 +60,7 @@ public class Game
         System.out.println(Arrays.toString(filled[row]));
     }
 
-    public void calcC(int column){
+    public void calcColumn(int column){
         int x=0;
         for(int i=0;i<columns[column].size();i++){
             x += columns[column].get(i);
@@ -89,7 +89,7 @@ public class Game
         System.out.println("]");
     }
     
-    public void calcCS(int column){
+    public void calcColumnS(int column){
         int x=0;
         for(int i=0;i<columns[column].size();i++){
             x += columns[column].get(i);
@@ -109,7 +109,7 @@ public class Game
         }
     }
 
-    public void calcRS(int row){
+    public void calcRowS(int row){
         int x=0;
         for(int i=0;i<rows[row].size();i++){
             x += rows[row].get(i);
@@ -129,6 +129,43 @@ public class Game
         }
     }
     
+    public void calc(int row, int column){
+        int x=0;
+        for(int i=0;i<rows[row].size();i++){
+            x += rows[row].get(i);
+        }
+        x += rows[row].size()-1;
+        int z = size-x;
+        for(int i=0; i<rows[row].size();i++){
+            if (z<rows[row].get(i)){
+                int loc = i;
+                for(int j=0;j<=i;j++){
+                    loc += rows[row].get(j);
+                }
+                for(int j=(loc-(rows[row].get(i)-z));j<loc;j++){
+                  filled[row][j]="1";
+                }
+            }
+        }
+        x=0;
+        for(int i=0;i<columns[column].size();i++){
+            x += columns[column].get(i);
+        }
+        x += columns[column].size()-1;
+        z = size-x;
+        for(int i=0; i<columns[column].size();i++){
+            if (z<columns[column].get(i)){
+                int loc = i;
+                for(int j=0;j<=i;j++){
+                    loc += columns[column].get(j);
+                }
+                for(int j=(loc-(columns[column].get(i)-z));j<loc;j++){
+                  filled[j][column]="1";
+                }
+            }
+        }
+    }
+
     public void getfilled(){
         int i=0;
         for(String[] row : filled){

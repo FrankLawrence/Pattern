@@ -26,8 +26,9 @@ public class test
         game.setColumn(3, 3, 3, 13);
         game.setColumn(5, 6, 11);
         for(int i=0;i<15;i++){
-            game.calcRS(i);
-            game.calcCS(i);
+            for (int j = 0; j < 15; j++) {
+                game.calc2(i,i);
+            }
         }
         game.getfilled();
         System.out.println(" ");
